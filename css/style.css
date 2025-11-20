@@ -407,3 +407,80 @@ body:has(.sidebar.collapsed) .content {
   background-color: #c82333;
   border-color: #c82333;
 }
+
+/* Code Tabs */
+.code-tabs {
+  margin: 1rem 0 2rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.code-tabs-header {
+  display: flex;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  padding: 0;
+  margin: 0;
+}
+
+.code-tab-button {
+  background: none;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #6c757d;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+.code-tab-button:hover {
+  color: #007bff;
+  background-color: #e9ecef;
+}
+
+.code-tab-button.active {
+  color: #007bff;
+  border-bottom-color: #007bff;
+  background-color: #fff;
+}
+
+.code-tab-content {
+  display: none;
+}
+
+.code-tab-content.active {
+  display: block;
+}
+
+.code-tab-content pre {
+  margin: 0;
+  border-radius: 0;
+}
+
+body.dark-mode .code-tabs {
+  border-color: #444;
+}
+
+body.dark-mode .code-tabs-header {
+  background-color: #2d2d2d;
+  border-bottom-color: #444;
+}
+
+body.dark-mode .code-tab-button {
+  color: #b0b0b0;
+}
+
+body.dark-mode .code-tab-button:hover {
+  color: #66b3ff;
+  background-color: #3a3a3a;
+}
+
+body.dark-mode .code-tab-button.active {
+  color: #66b3ff;
+  border-bottom-color: #66b3ff;
+  background-color: #1a1a1a;
+}
