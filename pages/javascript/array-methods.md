@@ -7,6 +7,7 @@ Gli array in JavaScript sono oggetti super potenti con una tonnellata di metodi 
 Questi metodi restituiscono un nuovo array o un nuovo valore, lasciando intatto l'array di partenza. Sono fondamentali per un approccio di programmazione funzionale.
 
 ### `map()`
+
 Il metodo `map()` crea un nuovo array popolato con i risultati della chiamata di una funzione fornita su ogni elemento dell'array chiamante.
 
 ```javascript

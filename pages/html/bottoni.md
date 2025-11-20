@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD033 -->
 # Bottoni HTML
 
 I bottoni sono elementi fondamentali per l'interazione utente in una pagina web.
