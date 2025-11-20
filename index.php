@@ -6,7 +6,30 @@ define('PAGES_DIR', __DIR__ . '/pages/');
 // Libreria per convertire Markdown in HTML (la includiamo direttamente)
 // Scarica Parsedown.php da https://parsedown.org/ e mettilo nella root del progetto.
 require 'Parsedown.php';
-$Parsedown = new Parsedown();
+
+// Estendi Parsedown per aggiungere classi Prism ai blocchi di codice
+class ParsedownWithPrism extends Parsedown
+{
+    protected function blockFencedCodeComplete($Block)
+    {
+        // Chiama il metodo parent
+        $Block = parent::blockFencedCodeComplete($Block);
+        
+        // Aggiungi la classe language-* per Prism
+        if (isset($Block['element']['text']['attributes']['class'])) {
+            $class = $Block['element']['text']['attributes']['class'];
+            // Prism usa il formato "language-xxx"
+            if (strpos($class, 'language-') === false) {
+                $Block['element']['text']['attributes']['class'] = 'language-' . $class;
+            }
+        }
+        
+        return $Block;
+    }
+}
+
+$Parsedown = new ParsedownWithPrism();
+$Parsedown->setSafeMode(false); // Permetti HTML inline per le anteprime
 
 // --- ROUTING ---
 // Ottieni la pagina richiesta dall'URL
