@@ -1,3 +1,6 @@
+<button id="sidebar-toggle" class="sidebar-toggle" aria-label="Nascondi/Mostra sidebar">
+    <span class="toggle-icon">«</span>
+</button>
 <aside class="sidebar">
     <nav>
         <ul>

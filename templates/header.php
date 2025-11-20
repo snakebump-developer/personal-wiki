@@ -14,4 +14,8 @@
     <div class="container">
         <header class="main-header">
             <h1>La Mia Wiki di Codice</h1>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">
+                <span class="sun-icon">☀️</span>
+                <span class="moon-icon">🌙</span>
+            </button>
         </header>
