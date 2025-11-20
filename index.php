@@ -9,16 +9,38 @@ require 'Parsedown.php';
 $Parsedown = new Parsedown();
 
 // --- ROUTING ---
-// Ottieni la pagina richiesta dall'URL, es. "index.php?page=javascript/array-methods"
-// Se nessuna pagina è richiesta, mostra una pagina di default.
-$page = $_GET['page'] ?? 'getting-started'; // 'getting-started' sarà la nostra homepage
+// Ottieni la pagina richiesta dall'URL
+$page = '';
+
+// Prova prima con il parametro GET
+if (isset($_GET['page']) && !empty($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    // Altrimenti prova a estrarre dall'URL
+    $request_uri = $_SERVER['REQUEST_URI'];
+    $script_name = dirname($_SERVER['SCRIPT_NAME']);
+    
+    // Rimuovi la base URL
+    $page = str_replace($script_name, '', $request_uri);
+    $page = trim($page, '/');
+    
+    // Rimuovi eventuali query string
+    if (strpos($page, '?') !== false) {
+        $page = substr($page, 0, strpos($page, '?'));
+    }
+}
+
+// Se ancora vuoto, usa la pagina di default
+if (empty($page)) {
+    $page = 'javascript/array-methods';
+}
 
 // Sanifica il percorso per sicurezza, evitando che si possa navigare in altre cartelle
 $page_path = realpath(PAGES_DIR . $page . '.md');
 
 // --- LOGICA DI VISUALIZZAZIONE ---
 $page_content = '';
-if ($page_path && strpos($page_path, PAGES_DIR) === 0) {
+if ($page_path && strpos($page_path, realpath(PAGES_DIR)) === 0) {
     // Il file esiste ed è dentro la cartella /pages/
     $markdown_content = file_get_contents($page_path);
     $page_content = $Parsedown->text($markdown_content); // Converti Markdown in HTML
