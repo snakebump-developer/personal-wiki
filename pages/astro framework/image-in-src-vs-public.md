@@ -7,7 +7,12 @@ Le immagini possono essere caricate in entrambi i contesti senza problemi, il va
 ```astro
 ---
 import { Image } from "astro:assets";
+
 import logo from "../images/logo.png";
+import about from "../images/about.jpg";
+import team1 from "../images/team1.png";
+import team2 from "../images/team2.png";
+import team3 from "../images/team3.png";
 ---
 ```
 
