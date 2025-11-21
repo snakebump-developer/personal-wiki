@@ -10,3 +10,7 @@
     - Struttura cartelle: `empty`
     - Installare le dipendenze: `yes`
     - Creare una repository: `no`
+
+3. Lanciamo al termine il comando per attivare il server:
+
+`npm run dev`
