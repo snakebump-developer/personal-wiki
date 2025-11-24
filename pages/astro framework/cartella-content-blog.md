@@ -16,3 +16,37 @@ import { getCollection } from 'astro:content';
 const blogPosts = await getCollection('blog');
 // TypeScript sa che ogni post ha title, pubDate, author, etc.
 ```
+
+nel file config creo una struttura del genere:
+
+```js
+import { defineCollection, z } from 'astro:content';
+// la z sta per l'utilizzo di Zodd una libreria per validare i dati dello schema
+const blogCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    pubDate: z.date(),
+    author: z.string(),
+    image: z.string(),
+    tags: z.array(z.string()),
+  }),
+});
+
+export const collections = {
+  blog: blogCollection,
+};
+```
+
+le informazioni dello schema fanno riferimento ai file md del content:
+
+```markdown
+---
+title: 'The best laptops for developers in 2024'
+pubDate: 2024-01-20
+author: 'John Doe'
+image: 'image1.png'
+tags: ['tech', 'hardware']
+slug: the-best-laptops-for-developers-in-2024
+---
+```
